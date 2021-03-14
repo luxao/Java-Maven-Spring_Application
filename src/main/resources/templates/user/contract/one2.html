@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Insurance</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-orange.min.css">
+    <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+    <style>
+        body {
+            display: flex;
+            height: 100vh;
+            background: lightcoral;
+        }
+
+        .mdc-list {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .mdc-drawer__header {
+            padding: 10px;
+        }
+
+        .mdc-list-item {
+            padding: 10px;
+            display: flex;
+            flex-direction: row;
+            text-decoration: none;
+        }
+
+        .mdc-list-item__text {
+            padding-left: 10px;
+        }
+
+        .mdc-drawer {
+            border-right-color: rgba(0, 0, 0, .12);
+            border-right-style: solid;
+            width: 10%;
+        }
+    </style>
+</head>
+<body>
+<aside class="mdc-drawer">
+    <div class="mdc-drawer__header">
+        <h3 class="mdc-drawer__title">Insurance</h3>
+    </div>
+    <div class="mdc-drawer__content">
+        <nav class="mdc-list">
+            <a class="mdc-list-item" href="/user/">
+                <i class="material-icons mdc-list-item__graphic" aria-hidden="true">drafts</i>
+                <span class="mdc-list-item__text">Users</span>
+            </a>
+
+        </nav>
+    </div>
+</aside>
+<div style="display: flex; flex-direction: column; width: 100%; overflow: auto">
+    <h1 style="margin: 10px;" th:object="${travelInsurance}">Travel Insurance</h1>
+    <ul class="demo-list-item mdl-list">
+        <li class="mdl-list__item">
+            <span class="mdl-list__item-primary-content">
+                <span>ID Contract:&nbsp;</span>
+                <span th:text="${travelInsurance.idContract}"></span>
+            </span>
+        </li>
+        <li class="mdl-list__item">
+            <span class="mdl-list__item-primary-content">
+                <span>NameOfContract:&nbsp;</span>
+                <span th:text="${travelInsurance.nameOfContract}"></span>
+            </span>
+        </li>
+        <li class="mdl-list__item">
+            <span class="mdl-list__item-primary-content">
+                <span>DateTime&nbsp;</span>
+                <span th:text="${travelInsurance.dateTime}"></span>
+            </span>
+        </li>
+        <li class="mdl-list__item">
+            <span class="mdl-list__item-primary-content">
+                <span>DateStart:</span>
+                <span th:text="${travelInsurance.dateStart}"></span>
+            </span>
+        </li>
+        <li class="mdl-list__item">
+            <span class="mdl-list__item-primary-content">
+                <span>DateEnd:</span>
+                <span th:text="${travelInsurance.dateEnd}"></span>
+            </span>
+        </li>
+        <li class="mdl-list__item">
+            <span class="mdl-list__item-primary-content">
+                <span>HighAmount:&nbsp;</span>
+                <span th:text="${travelInsurance.highAmount}"></span>
+            </span>
+        </li>
+        <li class="mdl-list__item">
+            <span class="mdl-list__item-primary-content">
+                <span>MonthPayment:&nbsp;</span>
+                <span th:text="${travelInsurance.monthPayment}"></span>
+            </span>
+        </li>
+        <li class="mdl-list__item">
+            <span class="mdl-list__item-primary-content">
+                <span>Eu:&nbsp;</span>
+                <span th:text="${travelInsurance.eu}"></span>
+            </span>
+        </li>
+
+        <li class="mdl-list__item">
+            <span class="mdl-list__item-primary-content">
+                <span>Purpose Of Trip:&nbsp;</span>
+                <span th:text="${travelInsurance.purposeOfTrip}"></span>
+            </span>
+        </li>
+        <li class="mdl-list__item">
+            <span class="mdl-list__item-primary-content">
+                <span>Insurer:</span>
+                <span  th:text="${travelInsurance.insurer}"></span>
+            </span>
+        </li>
+        <li class="mdl-list__item">
+            <span class="mdl-list__item-primary-content">
+                <span>Insured:</span>
+                <span  th:text="${travelInsurance.insured}"></span>
+            </span>
+        </li>
+        <li class="mdl-list__item">
+
+        <span class="mdl-list__item-primary-content">
+                <span>Edit Contract:&nbsp;</span>
+            <a th:href="@{'/user/uid/' + ${user.getUid()} + '/contract/update2/' + ${travelInsurance.idContract}}" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored" style="margin: 10px;min-width: 20px; min-height: 40px">
+                <i class="material-icons">edit</i>
+            </a>
+         </span>
+        </li>
+
+    </ul>
+
+</div>
+</body>

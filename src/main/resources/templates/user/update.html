@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" >
+<head>
+    <meta charset="UTF-8">
+    <title>Insurance</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-orange.min.css">
+    <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+    <style>
+        body {
+            display: flex;
+            height: 100vh;
+            background: lightcoral;
+        }
+        .mdc-list {
+            display: flex;
+            flex-direction: column;
+        }
+        .mdc-drawer__header {
+            padding: 15px;
+        }
+        .mdc-list-item {
+            padding: 15px;
+            display: flex;
+            flex-direction: row;
+            text-decoration: none;
+        }
+        .mdc-list-item__text {
+            padding-left: 15px;
+        }
+        .mdc-drawer {
+            border-right-color: rgba(0,0,0,.12);
+            border-right-style: solid;
+            width: 15%;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            margin: 15px;
+        }
+    </style>
+</head>
+<body>
+<aside class="mdc-drawer">
+    <div class="mdc-drawer__header">
+        <h3 class="mdc-drawer__title">Insurance</h3>
+    </div>
+    <div class="mdc-drawer__content">
+        <nav class="mdc-list">
+            <a class="mdc-list-item" href="/user/">
+                <i class="material-icons mdc-list-item__graphic" aria-hidden="true">send</i>
+                <span class="mdc-list-item__text">Users</span>
+            </a>
+
+        </nav>
+    </div>
+</aside>
+
+<form th:action="@{'/user/update/' + ${users.uid}}" th:object="${users}" method="post">
+
+    <label for="name">name</label>
+    <input type="text" id="name" th:field="*{name}"/>
+    <br>
+
+    <label for="name">surname</label>
+    <input type="text" id="surname" th:field="*{surname}"/>
+    <br>
+
+    <label for="idNumber">idNumber</label>
+    <input type="text" id="idNumber" th:field="*{idNumber}"/>
+    <br>
+
+    <label for="email">email</label>
+    <input type="email" id="email" th:field="*{email}"/>
+    <br>
+
+    <label for="psc">psc</label>
+    <input type="text" id="psc" th:field="*{psc}"/>
+    <br>
+
+    <label for="city">city</label>
+    <input type="text" id="city" th:field="*{city}"/>
+    <br>
+
+    <label for="street">street</label>
+    <input type="text" id="street" th:field="*{street}"/>
+    <br>
+
+    <label for="houseNumber">houseNumber</label>
+    <input type="number" id="houseNumber" th:field="*{houseNumber}"/>
+    <br>
+
+    <label for="corPsc">corPsc</label>
+    <input type="text" id="corPsc" th:field="*{corPsc}"/>
+    <br>
+
+    <label for="corCity">corCity</label>
+    <input type="text" id="corCity" th:field="*{corCity}"/>
+    <br>
+
+    <label for="corStreet">corStreet</label>
+    <input type="text" id="corStreet" th:field="*{corStreet}"/>
+    <br>
+
+    <label for="corHouseNumber">corHouseNumber</label>
+    <input type="number" id="corHouseNumber" th:field="*{corHouseNumber}"/>
+    <br>
+
+    <input type="submit" value="Submit"/>
+</form>
+</body>
+</html>

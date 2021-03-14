@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Insurance</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-orange.min.css">
+    <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+    <style>
+        body {
+            display: flex;
+            height: 100vh;
+            background: lightcoral;
+        }
+
+        .mdc-list {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .mdc-drawer__header {
+            padding: 15px;
+        }
+
+        .mdc-list-item {
+            padding: 15px;
+            display: flex;
+            flex-direction: row;
+            text-decoration: none;
+        }
+
+        .mdc-list-item__text {
+            padding-left: 15px;
+        }
+
+        .mdc-drawer {
+            border-right-color: rgba(0, 0, 0, .12);
+            border-right-style: solid;
+            width: 15%;
+        }
+    </style>
+</head>
+<body>
+<aside class="mdc-drawer">
+    <div class="mdc-drawer__header">
+        <h3 class="mdc-drawer__title">Insurance</h3>
+    </div>
+    <div class="mdc-drawer__content">
+        <nav class="mdc-list">
+            <a class="mdc-list-item" href="/user/">
+                <i class="material-icons mdc-list-item__graphic" aria-hidden="true">drafts</i>
+                <span class="mdc-list-item__text">Users</span>
+            </a>
+
+        </nav>
+    </div>
+</aside>
+<div style="display: flex; flex-direction: column; width: 100%; overflow: auto">
+    <h1 style="margin: 10px;" th:value="${user.uid}"></h1>
+    <ul class="demo-list-item mdl-list">
+        <li class="mdl-list__item">
+            <span class="mdl-list__item-primary-content">
+                <span>UID:&nbsp;</span>
+                <span th:text="${user.uid}"></span>
+            </span>
+        </li>
+        <li class="mdl-list__item">
+            <span class="mdl-list__item-primary-content">
+                <span>Name:&nbsp;</span>
+                <span th:text="${user.name}"></span>
+            </span>
+        </li>
+        <li class="mdl-list__item">
+            <span class="mdl-list__item-primary-content">
+                <span>Surname:</span>
+                <span th:text="${user.surname}"></span>
+            </span>
+        </li>
+        <li class="mdl-list__item">
+            <span class="mdl-list__item-primary-content">
+                <span>Id Number:</span>
+                <span th:text="${user.idNumber}"></span>
+            </span>
+        </li>
+        <li class="mdl-list__item">
+            <span class="mdl-list__item-primary-content">
+                <span>Email:&nbsp;</span>
+                <span th:text="${user.email}"></span>
+            </span>
+        </li>
+        <li class="mdl-list__item">
+            <span class="mdl-list__item-primary-content">
+                <span>Psc:&nbsp;</span>
+                <span th:text="${user.psc}"></span>
+            </span>
+        </li>
+        <li class="mdl-list__item">
+            <span class="mdl-list__item-primary-content">
+                <span>City:&nbsp;</span>
+                <span th:text="${user.city}"></span>
+            </span>
+        </li>
+        <li class="mdl-list__item">
+            <span class="mdl-list__item-primary-content">
+                <span>Street:&nbsp;</span>
+                <span th:text="${user.street}"></span>
+            </span>
+        </li>
+        <li class="mdl-list__item">
+            <span class="mdl-list__item-primary-content">
+                <span>House Number:&nbsp;</span>
+                <span th:text="${user.houseNumber}"></span>
+            </span>
+        </li>
+        <li class="mdl-list__item">
+            <span class="mdl-list__item-primary-content">
+                <span>Correspondence Psc:&nbsp;</span>
+                <span th:text="${user.corPsc}"></span>
+            </span>
+        </li>
+        <li class="mdl-list__item">
+            <span class="mdl-list__item-primary-content">
+                <span>Correspondence City:&nbsp;</span>
+                <span th:text="${user.corCity}"></span>
+            </span>
+        </li>
+        <li class="mdl-list__item">
+            <span class="mdl-list__item-primary-content">
+                <span>Correspondence Street:&nbsp;</span>
+                <span th:text="${user.corStreet}"></span>
+            </span>
+        </li>
+        <li class="mdl-list__item">
+            <span class="mdl-list__item-primary-content">
+                <span>Correspondence House Number:&nbsp;</span>
+                <span th:text="${user.corHouseNumber}"></span>
+            </span>
+        </li>
+        <li class="mdl-list__item">
+        <span class="mdl-list__item-primary-content">
+                <span>Edit User:&nbsp;</span>
+                <a th:href="@{'/user/update/' + ${user.uid}}" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored" style="margin: 10px; min-height: 20px">
+                <i class="material-icons">build</i>
+            </a>
+            </span>
+        </li>
+
+        <h2 style="margin: 15px;">Contracts</h2>
+
+    </ul>
+    <table class="mdl-data-table mdl-js-data-table mdl-data-table mdl-shadow--2dp" style="margin: 10px">
+        <thead>
+        <tr>
+            <th class="mdl-data-table__cell--non-numeric">ID</th>
+            <th class="mdl-data-table__cell--non-numeric">Date-Time</th>
+            <th class="mdl-data-table__cell--non-numeric">Date-Start</th>
+            <th class="mdl-data-table__cell--non-numeric">Date-End</th>
+            <th class="mdl-data-table__cell--non-numeric">High Month Payment</th>
+
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="contract: ${contracts.values()}">
+            <td class="mdl-data-table__cell--non-numeric">
+                <a th:href="@{'/user/uid/' + ${user.uid} + '/contract/' + ${contract.getIdContract()}}" th:text="${contract.getIdContract()}"></a>
+            </td>
+            <td th:text="${contract.dateTime}" class="mdl-data-table__cell--non-numeric"></td>
+            <td th:text="${contract.dateStart}" class="mdl-data-table__cell--non-numeric"></td>
+            <td th:text="${contract.dateEnd}" class="mdl-data-table__cell--non-numeric"></td>
+            <td th:text="${contract.monthPayment}" class="mdl-data-table__cell--non-numeric"></td>
+
+        </tr>
+        </tbody>
+    </table>
+    <h6 style="margin: 10px;">Accident Insurance</h6>
+    <a th:href="@{'/user/contract/add1/' + ${user.getUid()}}" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored" style="margin: 10px;min-width: 20px; min-height: 40px">
+        <i class="material-icons">edit</i>
+    </a>
+    <h6 style="margin: 10px;">Travel Insurance</h6>
+    <a th:href="@{'/user/contract/add2/' + ${user.getUid()}}" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored" style="margin: 10px; min-width: 20px;min-height: 40px">
+        <i class="material-icons">edit</i>
+    </a>
+    <h6 style="margin: 10px;">House Apartment Insurance</h6>
+    <a th:href="@{'/user/contract/add3/' + ${user.getUid()}}" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored" style="margin: 10px;min-width: 20px; min-height: 40px">
+        <i class="material-icons">edit</i>
+    </a>
+    <h6 style="margin: 10px;">House Hold Insurance</h6>
+    <a th:href="@{'/user/contract/add4/' + ${user.getUid()}}" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored" style="margin: 10px; min-width: 20px; min-height: 40px">
+        <i class="material-icons">edit</i>
+    </a>
+
+
+
+
+</div>
+</body>
+</html>
